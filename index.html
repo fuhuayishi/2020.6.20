@@ -6,6 +6,57 @@
     <title>Document</title>
 </head>
 <body>
+    <!-- git命令 -->
+    0.在需要管理的文件夹下创建版本管理库  git init
+        git init命令把这个目录变成Git可以管理的仓库 
+    1.创建远程版本库，地址有http和ssh两种，推荐
+    选用ssh它生成有一对秘钥，提交验证时不需要输密码，https 从本地库网远程库提交时老让输账户密码，账号密码是github登录时的账号密码               
+    2.将readme.txt添加到暂存区    git add readme.txt
+    3.提交                        git commit -m "tset"
+        test是修改说明
+    4.关联远程仓库git remote add origin git@github.com:fuhuayishi/2020.6.20.git  
+        git@github.com:fuhuayishi/2020.6.20.gitorgin是他后面的东西的别名，可以改
+    5.将本地仓库推送到远程仓库主分支master    git push -u origin master  
+         把本地库的内容推送到远程，用git push命令，实际上是把当前分支master推送到远程
+         第一次推送master分支时，加上了-u参数，Git不但会把本地的master分支内容推送的远程新的master分支，还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令
+
+    6.创建一个远程库，然后clone远程库的文件     git clone git@github.com:fuhuayishi/2002test.git
+        克隆git库的地址推荐选用ssh，也可用https
+        注：从远程库克隆过来的默认就是一个版本管理库（有.git），不需要再git init创建版本管理库le 
+        自己修改后,输入命令 git add index.html  git commit -m "test"   git push推到远程库即可
+        在远程版本库看到
+
+
+    7.分支管理
+        创建dev分支并切换到dev分支      git checkout -b dev
+        git branch命令会列出所有分支，当前分支前面会标一个*号。
+        git checkout master 切换到master分支  git checkout切换分支
+        切换到dev分支修改文件内容时，master分支里的内容不会改变，
+        在dev分支上修改完后，可以将dev分支合并到master分支上,这样master分支就和dev分支修改后的文件一致了，再讲master推送到远程库  
+        git merge 命令用于合并指定分支到当前分支
+
+        git branch -d dev 删除分支
+
+    8.当你从远程仓库克隆时，实际上Git自动把本地的master分支和远程的master分支对应起来了，并且，远程仓库的默认名称是origin。
+
+    要查看远程库的信息，用git remote -v
+
+    9.从远程抓取分支，使用git pull
+    
+    10.因此，多人协作的工作模式通常是这样：
+
+    首先，可以试图用git push origin <branch-name>推送自己的修改；
+    
+    如果推送失败，则因为远程分支比你的本地更新，需要先用git pull试图合并；
+    
+    如果合并有冲突，则解决冲突，并在本地提交；
+    
+    没有冲突或者解决掉冲突后，再用git push origin <branch-name>推送就能成功！
+    
+    如果git pull提示no tracking information，则说明本地分支和远程分支的链接关系没有创建，用命令git branch --set-upstream-to <branch-name> origin/<branch-name>。
+
+
+
     
 </body>
 </html>
